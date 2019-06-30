@@ -17,7 +17,8 @@ import { blue } from "@material-ui/core/colors";
      user: this.props.user,
      fullname: "John",
      email: "john@john.com",
-     database_username: ''
+     database_username: '',
+     database_email: ''
    }
    // eslint-disable-next-line no-useless-constructor
    constructor(props) {
@@ -42,6 +43,7 @@ import { blue } from "@material-ui/core/colors";
     .catch((error) => alert(error))
   }
   getTest () {
+    //https://www.djamware.com/post/5bc50ea680aca7466989441d/reactjs-firebase-tutorial-building-firestore-crud-web-application
     console.log("Started Database get test")
     const db = app.firestore().collection('users').doc(this.state.user.uid);
     db.get().then((doc) => {
@@ -49,9 +51,10 @@ import { blue } from "@material-ui/core/colors";
         const board = doc.data();
         this.setState({
           database_username: board.fullname,
+          database_email: board.email,
         });
       } else {
-        console.log("No such document!");
+        console.log("User does not exist");
       }
     });
   }
@@ -81,7 +84,8 @@ import { blue } from "@material-ui/core/colors";
         </AppBar>
         <Router>
           <h1>Home</h1>
-          <p>{this.state.database_username}</p>
+          <p>Name : {this.state.database_username}</p>
+          <p>Email : {this.state.database_email}</p> 
         </Router>
       </div> 
     )

@@ -21,6 +21,12 @@ const SignUpView = ({ onSubmit }) => {
                 type="password"
                 placeholder="Password"
               />
+              <input
+                className="input"
+                name="password-r"
+                type="password"
+                placeholder="Retype Password"
+              />
             <button className="button-signup" type="submit">Sign Up</button>
           </form>
         </div>
